@@ -46,6 +46,8 @@ async function obtenerClima(ciudad) {
       const temperatureCelsius = Math.round(data.main.temp - 273.15);
       const temperatureFahrenheit = Math.round((temperatureCelsius * 9/5) + 32);
       const description = data.weather[0].description;
+      const humidity = data.main.humidity;
+      const windSpeed = data.wind.speed;
       const cityName = data.name;
       const country = data.sys.country;
 
@@ -54,7 +56,10 @@ async function obtenerClima(ciudad) {
       <p> Clima en ${cityName}, ${country}:</p>
       <p> Descripción: ${description}</p>
       <p> Temperatura en Celsius: ${temperatureCelsius}°C</p>
-      <p> Temperatura en Fahrenheit: ${temperatureFahrenheit}°F</p>`;
+      <p> Temperatura en Fahrenheit: ${temperatureFahrenheit}°F</p>
+      <p> Humedad: ${humidity}%</p>
+      <p> Velocidad del Viento: ${windSpeed} m/s</p>`;
+
     } else {
       mostrarError("Ciudad no encontrada.");
     }
